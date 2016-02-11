@@ -19,13 +19,13 @@ namespace Java_UML_GUI
         public int Decorator_MethodDelegation;
         public Boolean Singleton_RequireGetInstance;
 
-        public static JsonConfig loadFromFile(String path)
+        public static JsonConfig LoadFromFile(String path)
         {
             String toRead = File.ReadAllText(path);
             return JsonConvert.DeserializeObject<JsonConfig>(toRead);
         }
 
-        public void saveToFile(String path)
+        public void SaveToFile(String path)
         {
             String toWrtie = JsonConvert.SerializeObject(this);
 
