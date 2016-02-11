@@ -24,5 +24,15 @@ namespace Java_UML_GUI
         {
             InitializeComponent();
         }
+
+        private void ConfigurationButton_Click(object sender, RoutedEventArgs e)
+        {
+            new ConfigEditor().ShowDialog();
+        }
+
+        private void AnalyzeButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.INSTANCE.mainFrame.Source = new Uri("UMLPage.xaml", UriKind.RelativeOrAbsolute);
+        }
     }
 }

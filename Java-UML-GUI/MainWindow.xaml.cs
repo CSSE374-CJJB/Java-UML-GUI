@@ -20,9 +20,17 @@ namespace Java_UML_GUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static MainWindow INSTANCE;
+
         public MainWindow()
         {
             InitializeComponent();
+            INSTANCE = this;
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
