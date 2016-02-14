@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Microsoft.Win32;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -29,12 +30,21 @@ namespace Java_UML_GUI
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            conf.SaveToFile("./config");
+            SaveFileDialog fileD = new SaveFileDialog();
+            if (fileD.ShowDialog() == true)
+            {
+                conf.SaveToFile(fileD.FileName);
+            }
         }
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            conf = JsonConfig.LoadFromFile("./config");
+            OpenFileDialog fileD = new OpenFileDialog();
+            if (fileD.ShowDialog() == true)
+            {
+                conf = JsonConfig.LoadFromFile(fileD.FileName);
+                loadConfig();
+            }  
         }
 
         private void Output_Directory_Text_TextChanged(object sender, TextChangedEventArgs e)
@@ -76,6 +86,18 @@ namespace Java_UML_GUI
         {
             conf.Singleton_RequireGetInstance = (bool)Singleton_Check.IsChecked;
 
+        }
+
+        private void loadConfig()
+        {
+            Singleton_Check.IsChecked = conf.Singleton_RequireGetInstance;
+            Decorator_Delegation_Number.Text = Convert.ToString(conf.Decorator_MethodDelegation);
+            Adapter_Delegation_Number.Text = Convert.ToString(conf.Adapter_MethodDelegation);
+            Phases_Text.Text = conf.Phases;
+            Dot_Path_Text.Text = conf.DotPath;
+            Input_Folder_Text.Text = conf.InputFolder;
+            Input_Classes_Text.Text = conf.InputClasses;
+            Output_Directory_Text.Text = conf.OutputDirectory;
         }
 
     }
