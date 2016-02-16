@@ -17,7 +17,7 @@ namespace Java_UML_GUI
         public String Phases;
         public int Adapter_MethodDelegation;
         public int Decorator_MethodDelegation;
-        public Boolean Singleton_RequireGetInstance;
+        public bool? Singleton_RequireGetInstance;
 
         public static JsonConfig LoadFromFile(String path)
         {

@@ -33,15 +33,19 @@
         <Label x:Name="Adapter_Delegation" Content="Adapter Delagation:" HorizontalAlignment="Left" Margin="29,25.6,0,0" Grid.Row="3" VerticalAlignment="Top"/>
         <Label x:Name="Decorator_Delegation" Content="Decorator Delagation:" HorizontalAlignment="Left" Height="29" Margin="18,0,0,0" Grid.Row="4" VerticalAlignment="Top" Width="127"/>
         <Label x:Name="Singleton" Content="Singleton Check:" HorizontalAlignment="Left" Margin="50,25,0,0" Grid.Row="4" VerticalAlignment="Top"/>
-        <ComboBox x:Name="Adapter_Delegation_Number" HorizontalAlignment="Left" Margin="147,29.6,0,0" Grid.Row="3" VerticalAlignment="Top" Width="85" Grid.ColumnSpan="2">
-            <Button Content="0"/>
-            <Button Content="1"/>
-            <Button Content="2"/>
+        <ComboBox x:Name="Adapter_Delegation_Number" HorizontalAlignment="Left" Margin="147,29.6,0,0" Grid.Row="3" VerticalAlignment="Top" Width="85" Grid.ColumnSpan="2" SelectionChanged="Adapter_Delegation_Number_SelectionChanged">
+            <ComboBoxItem Content="0"/>
+            <ComboBoxItem Content="1"/>
+            <ComboBoxItem Content="2"/>
+            <ComboBoxItem Content="3"/>
+            <ComboBoxItem Content="4"/>
         </ComboBox>
-        <ComboBox x:Name="Decorator_Delegation_Number" HorizontalAlignment="Left" Margin="147,3,0,0" Grid.Row="4" VerticalAlignment="Top" Width="85" Grid.ColumnSpan="2">
-            <Button Content="1"/>
-            <Button Content="2"/>
-            <Button Content="3"/>
+        <ComboBox x:Name="Decorator_Delegation_Number" HorizontalAlignment="Left" Margin="147,3,0,0" Grid.Row="4" VerticalAlignment="Top" Width="85" Grid.ColumnSpan="2" SelectionChanged="Decorator_Delegation_Number_SelectionChanged">
+            <ComboBoxItem Content="0"/>
+            <ComboBoxItem Content="1"/>
+            <ComboBoxItem Content="2"/>
+            <ComboBoxItem Content="3"/>
+            <ComboBoxItem Content="4"/>
         </ComboBox>
         <CheckBox x:Name="Singleton_Check" Content="" HorizontalAlignment="Left" Margin="147,30,0,0" Grid.Row="4" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
 

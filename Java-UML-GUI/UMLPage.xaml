@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Java_UML_GUI"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="343.6" d:DesignWidth="724"
       Title="UML Viewer">
 
     <Grid>
@@ -26,15 +26,13 @@
                         </Setter>
                     </Style>
                 </TreeView.Resources>
-                <TreeViewItem Header="North America">
-                    <TreeViewItem Header="USA"></TreeViewItem>
-                    <TreeViewItem Header="Canada"></TreeViewItem>
-                    <TreeViewItem Header="Mexico"></TreeViewItem>
+                <TreeViewItem x:Name="Decorator_Header" Header="Decorator">
                 </TreeViewItem>
-                <TreeViewItem Header="South America">
-                    <TreeViewItem Header="Argentina"></TreeViewItem>
-                    <TreeViewItem Header="Brazil"></TreeViewItem>
-                    <TreeViewItem Header="Uruguay"></TreeViewItem>
+                <TreeViewItem x:Name="Singleton_Header" Header="Singleton">
+                </TreeViewItem>
+                <TreeViewItem x:Name="Composite_Header" Header="Composite">
+                </TreeViewItem>
+                <TreeViewItem x:Name="Adapter_Header" Header="Adapter">
                 </TreeViewItem>
             </TreeView>
             <Border x:Name="border">
