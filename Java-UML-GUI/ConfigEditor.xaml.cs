@@ -20,11 +20,9 @@ namespace Java_UML_GUI
     /// </summary>
     public partial class ConfigEditor : Window
     {
-        JsonConfig conf;
-
         public ConfigEditor()
         {
-            conf = new JsonConfig();
+            MainWindow.INSTANCE.config = new JsonConfig();
             InitializeComponent();
         }
 
@@ -33,7 +31,7 @@ namespace Java_UML_GUI
             SaveFileDialog fileD = new SaveFileDialog();
             if (fileD.ShowDialog() == true)
             {
-                conf.SaveToFile(fileD.FileName);
+                MainWindow.INSTANCE.config.SaveToFile(fileD.FileName);
             }
         }
 
@@ -42,62 +40,62 @@ namespace Java_UML_GUI
             OpenFileDialog fileD = new OpenFileDialog();
             if (fileD.ShowDialog() == true)
             {
-                conf = JsonConfig.LoadFromFile(fileD.FileName);
+                MainWindow.INSTANCE.config = JsonConfig.LoadFromFile(fileD.FileName);
                 loadConfig();
             }  
         }
 
         private void Output_Directory_Text_TextChanged(object sender, TextChangedEventArgs e)
         {
-            conf.OutputDirectory = Output_Directory_Text.Text;
+            MainWindow.INSTANCE.config.OutputDirectory = Output_Directory_Text.Text;
         }
 
         private void Input_Classes_Text_TextChanged(object sender, TextChangedEventArgs e)
         {
-            conf.InputClasses = Input_Classes_Text.Text;
+            MainWindow.INSTANCE.config.InputClasses = Input_Classes_Text.Text;
         }
 
         private void Input_Folder_Text_TextChanged(object sender, TextChangedEventArgs e)
         {
-            conf.InputFolder = Input_Folder_Text.Text;
+            MainWindow.INSTANCE.config.InputFolder = Input_Folder_Text.Text;
         }
 
         private void Dot_Path_Text_TextChanged(object sender, TextChangedEventArgs e)
         {
-            conf.DotPath = Dot_Path_Text.Text;
+            MainWindow.INSTANCE.config.DotPath = Dot_Path_Text.Text;
         }
 
         private void Phases_Text_TextChanged(object sender, TextChangedEventArgs e)
         {
-            conf.Phases = Phases_Text.Text;
+            MainWindow.INSTANCE.config.Phases = Phases_Text.Text;
         }
 
         private void Singleton_Check_Checked(object sender, RoutedEventArgs e)
         {
-            conf.Singleton_RequireGetInstance = Singleton_Check.IsChecked;
+            MainWindow.INSTANCE.config.Singleton_RequireGetInstance = Singleton_Check.IsChecked;
 
         }
 
         private void loadConfig()
         {
-            Singleton_Check.IsChecked = conf.Singleton_RequireGetInstance;
-            Decorator_Delegation_Number.SelectedIndex = conf.Decorator_MethodDelegation;
-            Adapter_Delegation_Number.SelectedIndex = conf.Adapter_MethodDelegation;
-            Phases_Text.Text = conf.Phases;
-            Dot_Path_Text.Text = conf.DotPath;
-            Input_Folder_Text.Text = conf.InputFolder;
-            Input_Classes_Text.Text = conf.InputClasses;
-            Output_Directory_Text.Text = conf.OutputDirectory;
+            Singleton_Check.IsChecked = MainWindow.INSTANCE.config.Singleton_RequireGetInstance;
+            Decorator_Delegation_Number.SelectedIndex = MainWindow.INSTANCE.config.Decorator_MethodDelegation;
+            Adapter_Delegation_Number.SelectedIndex = MainWindow.INSTANCE.config.Adapter_MethodDelegation;
+            Phases_Text.Text = MainWindow.INSTANCE.config.Phases;
+            Dot_Path_Text.Text = MainWindow.INSTANCE.config.DotPath;
+            Input_Folder_Text.Text = MainWindow.INSTANCE.config.InputFolder;
+            Input_Classes_Text.Text = MainWindow.INSTANCE.config.InputClasses;
+            Output_Directory_Text.Text = MainWindow.INSTANCE.config.OutputDirectory;
         }
 
         private void Decorator_Delegation_Number_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            conf.Decorator_MethodDelegation = Decorator_Delegation_Number.SelectedIndex;
+            MainWindow.INSTANCE.config.Decorator_MethodDelegation = Decorator_Delegation_Number.SelectedIndex;
         }
 
         private void Adapter_Delegation_Number_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            conf.Adapter_MethodDelegation = Adapter_Delegation_Number.SelectedIndex;
+            MainWindow.INSTANCE.config.Adapter_MethodDelegation = Adapter_Delegation_Number.SelectedIndex;
         }
     }
 }

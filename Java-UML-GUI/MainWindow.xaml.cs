@@ -21,6 +21,7 @@ namespace Java_UML_GUI
     public partial class MainWindow : Window
     {
         public static MainWindow INSTANCE;
+        public JsonConfig config;
 
         public MainWindow()
         {

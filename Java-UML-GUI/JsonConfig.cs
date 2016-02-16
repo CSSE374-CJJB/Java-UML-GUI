@@ -31,5 +31,10 @@ namespace Java_UML_GUI
 
             File.WriteAllText(path, toWrtie);
         }
+
+        public string getJavaUMLArguments()
+        {
+            return "";
+        }
     }
 }
