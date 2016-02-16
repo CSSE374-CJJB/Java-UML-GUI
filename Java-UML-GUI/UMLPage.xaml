@@ -17,7 +17,7 @@
                             <Setter.Value>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <CheckBox Name="chk" Margin="2" Tag="{Binding}" >
+                                        <CheckBox x:Name="chkBox" Margin="2" Tag="{Binding}" Checked="Composite_Header_Selected">
                                         </CheckBox>
                                         <TextBlock Text="{Binding}"></TextBlock>
                                     </StackPanel>

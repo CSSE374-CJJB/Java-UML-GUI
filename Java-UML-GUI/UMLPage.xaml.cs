@@ -32,11 +32,13 @@ namespace Java_UML_GUI
             image.MouseMove += image_MouseMove;
             image.MouseLeftButtonUp += image_MouseLeftButtonUp;
 
+          //  ((CheckBox)Composite_Header.Items.GetItemAt(0)).Checked += Composite_Header_Selected;
+
             TransformGroup group = new TransformGroup();
             group.Children.Add(new ScaleTransform());
             group.Children.Add(new TranslateTransform());
             image.RenderTransform = group;
-            file = File.ReadAllText(@"C:\Users\brinegjr\Documents\CSSE 374\Java-UML-Generator\output.txt");
+            file = File.ReadAllText(@".\umlOutput.txt");
             PopulateCheckBoxes();
         }
 
