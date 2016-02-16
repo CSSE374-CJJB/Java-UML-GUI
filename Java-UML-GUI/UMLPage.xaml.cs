@@ -31,7 +31,7 @@ namespace Java_UML_GUI
 
             TransformGroup group = new TransformGroup();
             group.Children.Add(new ScaleTransform());
-            //group.Children.Add(new TranslateTransform());
+            group.Children.Add(new TranslateTransform());
             image.RenderTransform = group;
 
         }
@@ -40,7 +40,8 @@ namespace Java_UML_GUI
 
         private void image_MouseWheel(object sender, MouseWheelEventArgs e)
         {
-            var st = (ScaleTransform)image.RenderTransform;
+            var st = (ScaleTransform)((TransformGroup)image.RenderTransform)
+                .Children.First(tr => tr is ScaleTransform);
             double zoom = e.Delta > 0 ? .2 : -.2;
             st.ScaleX += zoom;
             st.ScaleY += zoom;

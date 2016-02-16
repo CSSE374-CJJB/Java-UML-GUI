@@ -38,7 +38,7 @@
                 </TreeViewItem>
             </TreeView>
             <Border x:Name="border">
-                <Image x:Name="image" HorizontalAlignment="Right" Grid.Column="1" DockPanel.Dock="Right" Source="pack://siteoforigin:,,,/Resources/UML_MANUAL_M6.png" Stretch="None" ClipToBounds="True" RenderTransformOrigin="0.5,0.5"/>
+                <Image x:Name="image" HorizontalAlignment="Right" Grid.Column="1" DockPanel.Dock="Right" Source="pack://siteoforigin:,,,/Resources/UML_MANUAL_M6.png" Stretch="None" RenderTransformOrigin="0.5,0.5"/>
             </Border>
         </DockPanel>
     </Grid>
