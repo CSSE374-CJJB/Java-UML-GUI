@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,8 @@ namespace Java_UML_GUI
     /// </summary>
     public partial class UMLPage : Page
     {
+        string file;
+
         public UMLPage()
         {
             InitializeComponent();
@@ -33,7 +36,8 @@ namespace Java_UML_GUI
             group.Children.Add(new ScaleTransform());
             //group.Children.Add(new TranslateTransform());
             image.RenderTransform = group;
-
+            file = File.ReadAllText(@"C:\Users\brinegjr\Documents\CSSE 374\Java-UML-Generator\output.txt");
+            PopulateCheckBoxes();
         }
 
         // http://stackoverflow.com/questions/741956/pan-zoom-image
@@ -72,6 +76,122 @@ namespace Java_UML_GUI
         private void image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             image.ReleaseMouseCapture();
+        }
+
+        private void PopulateCheckBoxes()
+        {
+
+            string[] seperator = new string[] { "\\l\\<\\<decorator\\>\\>" };
+            string[] array = file.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+            DecoratorBoxes(array);
+
+            seperator = new string[] { "\\l\\<\\<singleton\\>\\>" };
+            string[] singletonArray = file.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+            SingletonBoxes(singletonArray);
+
+            seperator = new string[] { "\\l\\<\\<Composite\\>\\>" };
+            string[] compositeArray = file.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+            CompositeBoxes(compositeArray);
+            seperator = new string[] { "\\l\\<\\<Component\\>\\>" };
+            compositeArray = file.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+            CompositeBoxes(compositeArray);
+
+            seperator = new string[] { "\\l\\<\\<adapter\\>\\>" };
+            string[] adapterArray = file.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+            AdapterBoxes(adapterArray);
+            seperator = new string[] { "\\l\\<\\<adaptee\\>\\>" };
+            adapterArray = file.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+            AdapterBoxes(adapterArray);
+            seperator = new string[] { "\\l\\<\\<target\\>\\>" };
+            adapterArray = file.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+            AdapterBoxes(adapterArray);
+
+        }
+
+        private void DecoratorBoxes(string[] array)
+        {
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                string[] nameArray = array[i].Split("{".ToCharArray());
+                if (nameArray[nameArray.Length - 1].Contains("\\<\\<interface\\>\\>\\l"))
+                {
+                    string[] seperator = new string[] { "\\<\\<interface\\>\\>\\l" };
+                    nameArray = nameArray[nameArray.Length - 1].Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+                    Decorator_Header.Items.Add(nameArray[nameArray.Length - 1]);
+                } else
+                {
+                    Decorator_Header.Items.Add(nameArray[nameArray.Length - 1]);
+                }
+                
+            }
+        }
+
+        private void SingletonBoxes(string[] array)
+        {
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                string[] nameArray = array[i].Split("{".ToCharArray());
+                if (nameArray[nameArray.Length - 1].Contains("\\<\\<interface\\>\\>\\l"))
+                {
+                    string[] seperator = new string[] { "\\<\\<interface\\>\\>\\l" };
+                    nameArray = nameArray[nameArray.Length - 1].Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+                    Singleton_Header.Items.Add(nameArray[nameArray.Length - 1]);
+                }
+                else
+                {
+                    Singleton_Header.Items.Add(nameArray[nameArray.Length - 1]);
+                }
+
+            }
+        }
+
+        private void CompositeBoxes(string[] array)
+        {
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                string[] nameArray = array[i].Split("{".ToCharArray());
+                if (nameArray[nameArray.Length - 1].Contains("\\<\\<interface\\>\\>\\l"))
+                {
+                    string[] seperator = new string[] { "\\<\\<interface\\>\\>\\l" };
+                    nameArray = nameArray[nameArray.Length - 1].Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+                    Composite_Header.Items.Add(nameArray[nameArray.Length - 1]);
+                }
+                else
+                {
+                    Composite_Header.Items.Add(nameArray[nameArray.Length - 1]);
+                }
+
+            }
+        }
+
+        private void AdapterBoxes(string[] array)
+        {
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                string[] nameArray = array[i].Split("{".ToCharArray());
+                if (nameArray[nameArray.Length - 1].Contains("\\<\\<interface\\>\\>\\l"))
+                {
+                    string[] seperator = new string[] { "\\<\\<interface\\>\\>\\l" };
+                    nameArray = nameArray[nameArray.Length - 1].Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+                    Adapter_Header.Items.Add(nameArray[nameArray.Length - 1]);
+                }
+                else
+                {
+                    Adapter_Header.Items.Add(nameArray[nameArray.Length - 1]);
+                }
+
+            }
+        }
+
+        private void Composite_Header_Selected(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("in selected");
+            ItemCollection items = Composite_Header.Items;
+            bool selected = Composite_Header.IsSelected;
+            for (int i = 0; i < items.Count; i++)
+            {
+                ((TreeViewItem)items.GetItemAt(i)).IsSelected = selected;
+            }
         }
     }
 }
