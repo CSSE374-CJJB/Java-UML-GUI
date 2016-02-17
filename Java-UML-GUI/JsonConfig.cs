@@ -11,10 +11,10 @@ namespace Java_UML_GUI
     public class JsonConfig
     {
         public String InputFolder;
-        public String InputClasses;
+        public string[] InputClasses;
         public String OutputDirectory;
         public String DotPath;
-        public String Phases;
+        public string[] Phases;
         public int Adapter_MethodDelegation;
         public int Decorator_MethodDelegation;
         public bool? Singleton_RequireGetInstance;

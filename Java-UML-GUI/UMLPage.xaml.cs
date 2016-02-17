@@ -38,7 +38,7 @@ namespace Java_UML_GUI
             group.Children.Add(new ScaleTransform());
             group.Children.Add(new TranslateTransform());
             image.RenderTransform = group;
-            file = File.ReadAllText(@".\umlOutput.txt");
+            file = File.ReadAllText(@"C:\Users\brinegjr\Documents\CSSE 374\Java-UML-Generator\output.txt");
             PopulateCheckBoxes();
         }
 
@@ -188,12 +188,12 @@ namespace Java_UML_GUI
 
         private void Composite_Header_Selected(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("in selected");
-            ItemCollection items = Composite_Header.Items;
-            bool selected = Composite_Header.IsSelected;
+            CheckBox chk = (CheckBox)e.OriginalSource;
+            ItemCollection items = ((TreeViewItem)chk.Parent).Items;
+            bool? selected = chk.IsChecked;
             for (int i = 0; i < items.Count; i++)
             {
-                ((TreeViewItem)items.GetItemAt(i)).IsSelected = selected;
+                ((CheckBox)items.GetItemAt(i)).IsChecked = selected;
             }
         }
     }

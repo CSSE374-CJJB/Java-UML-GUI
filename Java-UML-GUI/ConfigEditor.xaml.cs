@@ -52,7 +52,11 @@ namespace Java_UML_GUI
 
         private void Input_Classes_Text_TextChanged(object sender, TextChangedEventArgs e)
         {
-            MainWindow.INSTANCE.config.InputClasses = Input_Classes_Text.Text;
+            MainWindow.INSTANCE.config.InputClasses = Input_Class_Text.Text.Split(new string[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < MainWindow.INSTANCE.config.InputClasses.Length; i++)
+            {
+                Console.WriteLine(MainWindow.INSTANCE.config.InputClasses.GetValue(i));
+            }
         }
 
         private void Input_Folder_Text_TextChanged(object sender, TextChangedEventArgs e)
@@ -67,7 +71,7 @@ namespace Java_UML_GUI
 
         private void Phases_Text_TextChanged(object sender, TextChangedEventArgs e)
         {
-            MainWindow.INSTANCE.config.Phases = Phases_Text.Text;
+            MainWindow.INSTANCE.config.Phases = Phases_Text.Text.Split(new string[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
         }
 
         private void Singleton_Check_Checked(object sender, RoutedEventArgs e)
@@ -81,10 +85,10 @@ namespace Java_UML_GUI
             Singleton_Check.IsChecked = MainWindow.INSTANCE.config.Singleton_RequireGetInstance;
             Decorator_Delegation_Number.SelectedIndex = MainWindow.INSTANCE.config.Decorator_MethodDelegation;
             Adapter_Delegation_Number.SelectedIndex = MainWindow.INSTANCE.config.Adapter_MethodDelegation;
-            Phases_Text.Text = MainWindow.INSTANCE.config.Phases;
+            Phases_Text.Text = String.Join(", ", MainWindow.INSTANCE.config.Phases);
             Dot_Path_Text.Text = MainWindow.INSTANCE.config.DotPath;
             Input_Folder_Text.Text = MainWindow.INSTANCE.config.InputFolder;
-            Input_Classes_Text.Text = MainWindow.INSTANCE.config.InputClasses;
+            Input_Class_Text.Text = String.Join(", ", MainWindow.INSTANCE.config.InputClasses);
             Output_Directory_Text.Text = MainWindow.INSTANCE.config.OutputDirectory;
         }
 
