@@ -82,6 +82,9 @@ namespace Java_UML_GUI
             string[] seperator = new string[] { "\\l\\<\\<decorator\\>\\>" };
             string[] array = file.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
             DecoratorBoxes(array);
+            seperator = new string[] { "\\l\\<\\<component\\>\\>" };
+            array = file.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+            DecoratorBoxes(array);
 
             seperator = new string[] { "\\l\\<\\<singleton\\>\\>" };
             string[] singletonArray = file.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
