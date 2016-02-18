@@ -106,6 +106,23 @@ namespace Java_UML_GUI
 
         }
 
+        internal void ExportImage()
+        {
+            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+
+            Microsoft.Win32.SaveFileDialog fileD = new Microsoft.Win32.SaveFileDialog();
+            fileD.AddExtension = true;
+            fileD.DefaultExt = ".jpg";
+            if (fileD.ShowDialog() == true)
+            {
+                encoder.Frames.Add(BitmapFrame.Create((BitmapImage)image.Source));
+
+                using (var filestream = new FileStream(fileD.FileName, FileMode.Create))
+                    encoder.Save(filestream);
+            }
+
+        }
+
         private void DecoratorBoxes(string[] array)
         {
             for (int i = 0; i < array.Length - 1; i++)

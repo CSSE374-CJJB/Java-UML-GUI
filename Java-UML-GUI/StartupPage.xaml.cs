@@ -44,7 +44,9 @@ namespace Java_UML_GUI
 
             MainWindow.runGeneration();
 
-            MainWindow.INSTANCE.mainFrame.Source = new Uri("UMLPage.xaml", UriKind.RelativeOrAbsolute);
+            MainWindow.INSTANCE.umlPage = new UMLPage();
+
+            MainWindow.INSTANCE.mainFrame.Navigate(MainWindow.INSTANCE.umlPage);
         }
     }
 }

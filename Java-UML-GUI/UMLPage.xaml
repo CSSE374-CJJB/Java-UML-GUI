@@ -1,88 +1,85 @@
 ﻿<Page x:Class="Java_UML_GUI.UMLPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Java_UML_GUI"
-      mc:Ignorable="d" 
-      d:DesignHeight="500" d:DesignWidth="900"
       Title="UML Viewer">
-
     <Grid>
-        <DockPanel>
-            <TreeView x:Name="treeView" HorizontalAlignment="Left" Width="200" Grid.Column="0" DockPanel.Dock="Left">
-                <TreeViewItem x:Name="Decorator_Header" Header="Decorator">
-                    <TreeViewItem.ItemContainerStyle>
-                        <Style TargetType="{x:Type TreeViewItem}">
-                            <Setter Property="HeaderTemplate">
-                                <Setter.Value>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <CheckBox x:Name="chkBox" Margin="2" Tag="{Binding}" Checked="Checkbox_Checked">
-                                            </CheckBox>
-                                            <TextBlock Text="{Binding}"></TextBlock>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </TreeViewItem.ItemContainerStyle>
-                </TreeViewItem>
-                <TreeViewItem x:Name="Singleton_Header" Header="Singleton">
-                    <TreeViewItem.ItemContainerStyle>
-                        <Style TargetType="{x:Type TreeViewItem}">
-                            <Setter Property="HeaderTemplate">
-                                <Setter.Value>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <CheckBox x:Name="chkBox" Margin="2" Tag="{Binding}" Checked="Checkbox_Checked">
-                                            </CheckBox>
-                                            <TextBlock Text="{Binding}"></TextBlock>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </TreeViewItem.ItemContainerStyle>
-                </TreeViewItem>
-                <TreeViewItem x:Name="Composite_Header" Header="Composite">
-                    <TreeViewItem.ItemContainerStyle>
-                        <Style TargetType="{x:Type TreeViewItem}">
-                            <Setter Property="HeaderTemplate">
-                                <Setter.Value>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <CheckBox x:Name="chkBox" Margin="2" IsChecked="True" Checked="Checkbox_Checked" Unchecked="Checkbox_Unchecked">
-                                            </CheckBox>
-                                            <TextBlock Text="{Binding}"></TextBlock>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </TreeViewItem.ItemContainerStyle>
-                </TreeViewItem>
-                <TreeViewItem x:Name="Adapter_Header" Header="Adapter">
-                    <TreeViewItem.ItemContainerStyle>
-                        <Style TargetType="{x:Type TreeViewItem}">
-                            <Setter Property="HeaderTemplate">
-                                <Setter.Value>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <CheckBox x:Name="chkBox" Margin="2" Tag="{Binding}" Checked="Checkbox_Checked">
-                                            </CheckBox>
-                                            <TextBlock Text="{Binding}"></TextBlock>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </TreeViewItem.ItemContainerStyle>
-                </TreeViewItem>
-            </TreeView>
-            <Border x:Name="border">
-                <Image x:Name="image" HorizontalAlignment="Right" DockPanel.Dock="Right" Stretch="None" RenderTransformOrigin="0.5,0.5" Margin="0,10,0,-10"/>
-            </Border>
-        </DockPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="170"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TreeView x:Name="treeView" HorizontalAlignment="Left" Width="200" Grid.Column="0">
+            <TreeViewItem x:Name="Decorator_Header" Header="Decorator">
+                <TreeViewItem.ItemContainerStyle>
+                    <Style TargetType="{x:Type TreeViewItem}">
+                        <Setter Property="HeaderTemplate">
+                            <Setter.Value>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <CheckBox x:Name="chkBox" Margin="2" Tag="{Binding}" Checked="Checkbox_Checked">
+                                        </CheckBox>
+                                        <TextBlock Text="{Binding}"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TreeViewItem.ItemContainerStyle>
+            </TreeViewItem>
+            <TreeViewItem x:Name="Singleton_Header" Header="Singleton">
+                <TreeViewItem.ItemContainerStyle>
+                    <Style TargetType="{x:Type TreeViewItem}">
+                        <Setter Property="HeaderTemplate">
+                            <Setter.Value>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <CheckBox x:Name="chkBox" Margin="2" Tag="{Binding}" Checked="Checkbox_Checked">
+                                        </CheckBox>
+                                        <TextBlock Text="{Binding}"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TreeViewItem.ItemContainerStyle>
+            </TreeViewItem>
+            <TreeViewItem x:Name="Composite_Header" Header="Composite">
+                <TreeViewItem.ItemContainerStyle>
+                    <Style TargetType="{x:Type TreeViewItem}">
+                        <Setter Property="HeaderTemplate">
+                            <Setter.Value>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <CheckBox x:Name="chkBox" Margin="2" IsChecked="True" Checked="Checkbox_Checked" Unchecked="Checkbox_Unchecked">
+                                        </CheckBox>
+                                        <TextBlock Text="{Binding}"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TreeViewItem.ItemContainerStyle>
+            </TreeViewItem>
+            <TreeViewItem x:Name="Adapter_Header" Header="Adapter">
+                <TreeViewItem.ItemContainerStyle>
+                    <Style TargetType="{x:Type TreeViewItem}">
+                        <Setter Property="HeaderTemplate">
+                            <Setter.Value>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <CheckBox x:Name="chkBox" Margin="2" Tag="{Binding}" Checked="Checkbox_Checked">
+                                        </CheckBox>
+                                        <TextBlock Text="{Binding}"></TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TreeViewItem.ItemContainerStyle>
+            </TreeViewItem>
+        </TreeView>
+        <local:ZoomBorder x:Name="border" ClipToBounds="True" Background="Gray" Grid.Column="1">
+            <Image x:Name="image"/>
+        </local:ZoomBorder>
     </Grid>
 </Page>

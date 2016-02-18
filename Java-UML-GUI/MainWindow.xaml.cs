@@ -26,6 +26,8 @@ namespace Java_UML_GUI
         public JsonConfig config;
         public String configLocation;
 
+        public UMLPage umlPage;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -90,7 +92,13 @@ namespace Java_UML_GUI
 
         private void HomeMenu_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.INSTANCE.mainFrame.Source = new Uri("StartupPage.xaml", UriKind.RelativeOrAbsolute);
+            MainWindow.INSTANCE.mainFrame.Navigate(new StartupPage());
+        }
+
+        private void ExportMenu_Click(object sender, RoutedEventArgs e)
+        {
+            if(umlPage != null)
+                umlPage.ExportImage();
         }
     }
 }
