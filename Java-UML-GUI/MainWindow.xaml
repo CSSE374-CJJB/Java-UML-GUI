@@ -10,8 +10,13 @@
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
+                    <MenuItem Header="_Home" x:Name="HomeMenu" Click="HomeMenu_Click"/>
                     <MenuItem Header="_Save"/>
                     <MenuItem Header="_Close" Click="MenuItem_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Help">
+                    <MenuItem x:Name="GuideMenu" Header="_Guide" Click="GuideMenu_Click"/>
+                    <MenuItem x:Name="AboutMenu" Header="_About" Click="AboutMenu_Click"/>
                 </MenuItem>
             </Menu>
             <StackPanel></StackPanel>

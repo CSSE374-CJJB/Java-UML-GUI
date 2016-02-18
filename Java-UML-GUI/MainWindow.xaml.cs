@@ -37,41 +37,60 @@ namespace Java_UML_GUI
             this.Close();
         }
 
-        public static ProcessStartInfo GetJavaUmlGenProcessStartInfo()
+        public static Process GetJavaUmlGenProcess()
         {
-            ProcessStartInfo javaUmlProc = new ProcessStartInfo();
-            javaUmlProc.UseShellExecute = false;
-            javaUmlProc.FileName = "java"; // Java Jar 
-            javaUmlProc.Arguments = "-jar " + Directory.GetCurrentDirectory() + @"\Resources\javaUmlGenerator.jar JSON " + MainWindow.INSTANCE.configLocation;
-            return javaUmlProc;
+            Process toReturn = new Process();
+            toReturn.StartInfo.UseShellExecute = false;
+            toReturn.StartInfo.CreateNoWindow = true;
+            toReturn.StartInfo.RedirectStandardOutput = true;
+            toReturn.StartInfo.FileName = "java"; // Java Jar 
+            toReturn.StartInfo.Arguments = "-jar " + Directory.GetCurrentDirectory() + @"\Resources\javaUmlGenerator.jar JSON " + MainWindow.INSTANCE.configLocation;
+
+            toReturn.EnableRaisingEvents = true;
+
+            return toReturn;
         }
 
-        public static ProcessStartInfo GetDotProcessStartInfo()
+        public static Process GetDotProcess()
         {
             ProcessStartInfo dotProc = new ProcessStartInfo();
             dotProc.UseShellExecute = false;
             dotProc.FileName = MainWindow.INSTANCE.config.DotPath;
+            dotProc.CreateNoWindow = true;
+            //dotProc.RedirectStandardOutput = true;
             dotProc.Arguments = "-Tpng " + MainWindow.INSTANCE.config.OutputDirectory + @"\umlOutput.txt -O";
-            return dotProc;
+
+            Process toReturn = new Process();
+            toReturn.StartInfo = dotProc;
+            toReturn.EnableRaisingEvents = true;
+
+            return toReturn;
         }
 
         public static void runGeneration()
         {
-
-            ProcessStartInfo javaUmlProc = GetJavaUmlGenProcessStartInfo();
-
-            StartAndWaitForProcess(javaUmlProc);
-
-            // Get the Image
-            ProcessStartInfo dotProc = MainWindow.GetDotProcessStartInfo();
-
-            StartAndWaitForProcess(dotProc);
+            new Loading().ShowDialog();
         }
 
         public static void StartAndWaitForProcess(ProcessStartInfo javaUmlProc)
         {
             Process uml = Process.Start(javaUmlProc);
             uml.WaitForExit();
+        }
+
+        private void AboutMenu_Click(object sender, RoutedEventArgs e)
+        {
+            new AboutWindow().ShowDialog();
+        }
+
+        private void GuideMenu_Click(object sender, RoutedEventArgs e)
+        {
+            new GuideWindow().ShowDialog();
+        }
+
+        private void HomeMenu_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.INSTANCE.mainFrame.Source = new Uri("StartupPage.xaml", UriKind.RelativeOrAbsolute);
         }
     }
 }

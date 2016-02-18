@@ -189,6 +189,14 @@ namespace Java_UML_GUI
             MainWindow.INSTANCE.config.exclusion.Remove(clazz);
             MainWindow.INSTANCE.config.SaveToFile(MainWindow.INSTANCE.configLocation);
 
+            resetImage();
+        }
+
+        private void resetImage()
+        {
+            BitmapImage loading = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + @"\Resources\loading.gif"));
+            image.Source = loading;
+
             MainWindow.runGeneration();
 
             updateImage();
@@ -202,9 +210,7 @@ namespace Java_UML_GUI
             MainWindow.INSTANCE.config.exclusion.Add(clazz);
             MainWindow.INSTANCE.config.SaveToFile(MainWindow.INSTANCE.configLocation);
 
-            MainWindow.runGeneration();
-
-            updateImage();
+            resetImage();
         }
 
         private void updateImage()

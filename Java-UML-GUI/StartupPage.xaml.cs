@@ -31,6 +31,11 @@ namespace Java_UML_GUI
         private void ConfigurationButton_Click(object sender, RoutedEventArgs e)
         {
             new ConfigEditor().ShowDialog();
+            if(!String.IsNullOrWhiteSpace(MainWindow.INSTANCE.configLocation))
+            {
+                this.textLabel.Content = "Selected Config: " + MainWindow.INSTANCE.configLocation;
+                this.AnalyzeButton.IsEnabled = true;
+            }
         }
 
         private void AnalyzeButton_Click(object sender, RoutedEventArgs e)

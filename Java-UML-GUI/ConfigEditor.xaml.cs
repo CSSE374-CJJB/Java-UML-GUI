@@ -44,6 +44,10 @@ namespace Java_UML_GUI
             {
                 MainWindow.INSTANCE.config = JsonConfig.LoadFromFile(fileD.FileName);
                 MainWindow.INSTANCE.configLocation = fileD.FileName;
+
+                MainWindow.INSTANCE.config.exclusion = new List<String>();
+                MainWindow.INSTANCE.config.SaveToFile(fileD.FileName);
+
                 loadConfig();
             }  
         }
