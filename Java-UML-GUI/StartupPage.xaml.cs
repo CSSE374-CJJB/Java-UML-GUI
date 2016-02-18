@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -35,30 +37,8 @@ namespace Java_UML_GUI
         {
             // TODO Check config file to make sure it has valid arguments
 
-            // Get the Dot Text File
-/*
-            Process javaUmlProc = new Process();
-            javaUmlProc.StartInfo.UseShellExecute = false;
-            javaUmlProc.StartInfo.FileName = ""; // Java Jar 
-            javaUmlProc.StartInfo.Arguments = MainWindow.INSTANCE.config.getJavaUMLArguments();
-            javaUmlProc.StartInfo.RedirectStandardOutput = true;
-            javaUmlProc.StartInfo.RedirectStandardInput = true;
-            javaUmlProc.EnableRaisingEvents = true;
+            MainWindow.runGeneration();
 
-            javaUmlProc.Start();
-
-
-            // Get the Image
-            Process dotProc = new Process();
-            dotProc.StartInfo.UseShellExecute = false;
-            dotProc.StartInfo.FileName = MainWindow.INSTANCE.config.DotPath; 
-            dotProc.StartInfo.Arguments = "-Tpng umlOutput.txt -O";
-            dotProc.StartInfo.RedirectStandardOutput = true;
-            dotProc.StartInfo.RedirectStandardInput = true;
-            dotProc.EnableRaisingEvents = true;
-
-            dotProc.Start();
-            */
             MainWindow.INSTANCE.mainFrame.Source = new Uri("UMLPage.xaml", UriKind.RelativeOrAbsolute);
         }
     }

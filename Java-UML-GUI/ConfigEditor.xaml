@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Java_UML_GUI"
         mc:Ignorable="d"
-        Title="ConfigEditor" Height="300" Width="300">
+        Title="ConfigEditor" Height="300" Width="448.725">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -15,39 +15,38 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="170*"/>
+            <ColumnDefinition Width="271*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="LoadButton" Content="Load Config" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="LoadButton_Click"/>
-        <Button x:Name="SaveButton" Content="Save Config" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="75" Grid.Column="2" Click="SaveButton_Click"/>
-        <Label x:Name="Input_Folder" Content="Input Folder:" HorizontalAlignment="Left" Margin="70,54,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
-        <TextBox x:Name="Input_Folder_Text" HorizontalAlignment="Left" Height="23" Margin="147,2.6,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="85" Grid.ColumnSpan="2" Grid.Row="1" TextChanged="Input_Folder_Text_TextChanged"/>
-        <Label x:Name="Input_Classes" Content="Input Classes:" HorizontalAlignment="Left" Margin="64,25.6,0,0" Grid.Row="1" VerticalAlignment="Top" Height="23" Width="82" RenderTransformOrigin="-0.959,0.878"/>
-        <TextBox x:Name="Input_Class_Text" HorizontalAlignment="Left" Height="23" Margin="146,27.6,0,0" Grid.Row="1" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="86" RenderTransformOrigin="0.041,-0.527" Grid.ColumnSpan="2" TextChanged="Input_Classes_Text_TextChanged"/>
-        <Label x:Name="Output_Directory" Content="Output Directory:" HorizontalAlignment="Left" Margin="45,0,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        <TextBox x:Name="Output_Directory_Text" HorizontalAlignment="Left" Height="23" Margin="146,2,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="86" Grid.ColumnSpan="2" TextChanged="Output_Directory_Text_TextChanged"/>
-        <Label x:Name="Dot_Path" Content="Dot Path:" HorizontalAlignment="Left" Margin="87,26,0,0" Grid.Row="2" VerticalAlignment="Top" Width="59"/>
-        <TextBox x:Name="Dot_Path_Text" HorizontalAlignment="Left" Height="23" Margin="146,29,0,0" Grid.Row="2" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="86" Grid.ColumnSpan="2" TextChanged="Dot_Path_Text_TextChanged"/>
-        <Label x:Name="Phases" Content="Phases:" HorizontalAlignment="Left" Margin="98,54,0,0" Grid.Row="2" VerticalAlignment="Top" Grid.RowSpan="2"/>
-        <TextBox x:Name="Phases_Text" HorizontalAlignment="Left" Height="23" Margin="147,1.6,0,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="85" Grid.ColumnSpan="2" TextChanged="Phases_Text_TextChanged"/>
-        <Label x:Name="Adapter_Delegation" Content="Adapter Delagation:" HorizontalAlignment="Left" Margin="29,25.6,0,0" Grid.Row="3" VerticalAlignment="Top"/>
-        <Label x:Name="Decorator_Delegation" Content="Decorator Delagation:" HorizontalAlignment="Left" Height="29" Margin="18,0,0,0" Grid.Row="4" VerticalAlignment="Top" Width="127"/>
-        <Label x:Name="Singleton" Content="Singleton Check:" HorizontalAlignment="Left" Margin="50,25,0,0" Grid.Row="4" VerticalAlignment="Top"/>
-        <ComboBox x:Name="Adapter_Delegation_Number" HorizontalAlignment="Left" Margin="147,29.6,0,0" Grid.Row="3" VerticalAlignment="Top" Width="85" Grid.ColumnSpan="2" SelectionChanged="Adapter_Delegation_Number_SelectionChanged">
+        <Button x:Name="LoadButton" Content="Load Config" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="LoadButton_Click" Height="20"/>
+        <Button x:Name="SaveButton" Content="Save Config" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="SaveButton_Click" Height="20"/>
+        <Button x:Name="Input_Folder" Content="Input Folder:" HorizontalAlignment="Right" VerticalAlignment="Top" Click="Input_Folder_Click" Height="20" Grid.Row="1" Width="71"/>
+        <TextBlock x:Name="Input_Folder_Text" HorizontalAlignment="Stretch" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+        <Label x:Name="Input_Classes" Content="Input Classes:" HorizontalAlignment="Right" Margin="0,26,0,0" Grid.Row="1" VerticalAlignment="Top" Height="23" Width="82" />
+        <TextBox x:Name="Input_Classes_Text" HorizontalAlignment="Stretch" Height="23" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Bottom" Grid.Column="1" TextChanged="Input_Classes_Text_TextChanged"/>
+        <Button x:Name="Output_Directory" Content="Output Directory:" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Top" Click="Output_Directory_Click" Height="20" Width="96"/>
+        <TextBlock x:Name="Output_Directory_Text" HorizontalAlignment="Stretch" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top"  Grid.Column="1"/>
+        <Button x:Name="Dot_Path" Content="Dot Location:" HorizontalAlignment="Right" Margin="0,26,0,0" Grid.Row="2" VerticalAlignment="Top" Width="82" Height="26" Click="Dot_Path_Click"/>
+        <TextBlock x:Name="Dot_Path_Text" HorizontalAlignment="Stretch" Height="23" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Bottom" Grid.Column="1"/>
+        <Label x:Name="Phases" Content="Phases:" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Top" Height="26" Width="49"/>
+        <TextBox x:Name="Phases_Text" HorizontalAlignment="Stretch" Height="23" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1" TextChanged="Phases_Text_TextChanged"/>
+        <Label x:Name="Adapter_Delegation" Content="Adapter Delagation:" HorizontalAlignment="Right" Margin="0,26,0,0" Grid.Row="3" VerticalAlignment="Top" Height="26" Width="116"/>
+        <Label x:Name="Decorator_Delegation" Content="Decorator Delagation:" HorizontalAlignment="Right" Height="29" Grid.Row="4" VerticalAlignment="Top" Width="127"/>
+        <Label x:Name="Singleton" Content="Singleton GetInstance Check:" HorizontalAlignment="Right" Margin="0,25,0,0" Grid.Row="4" VerticalAlignment="Top" Height="26" Width="164" />
+        <ComboBox x:Name="Adapter_Delegation_Number" HorizontalAlignment="Stretch" Grid.Row="3" VerticalAlignment="Bottom" Grid.Column="1" SelectionChanged="Adapter_Delegation_Number_SelectionChanged" Height="22">
             <ComboBoxItem Content="0"/>
             <ComboBoxItem Content="1"/>
             <ComboBoxItem Content="2"/>
             <ComboBoxItem Content="3"/>
             <ComboBoxItem Content="4"/>
         </ComboBox>
-        <ComboBox x:Name="Decorator_Delegation_Number" HorizontalAlignment="Left" Margin="147,3,0,0" Grid.Row="4" VerticalAlignment="Top" Width="85" Grid.ColumnSpan="2" SelectionChanged="Decorator_Delegation_Number_SelectionChanged">
-            <ComboBoxItem Content="0"/>
-            <ComboBoxItem Content="1"/>
-            <ComboBoxItem Content="2"/>
-            <ComboBoxItem Content="3"/>
-            <ComboBoxItem Content="4"/>
+        <ComboBox x:Name="Decorator_Delegation_Number" HorizontalAlignment="Stretch" Grid.Row="4" VerticalAlignment="Top" Grid.Column="1" SelectionChanged="Decorator_Delegation_Number_SelectionChanged" Height="22">
+            <ComboBoxItem Content="0" Tag="0" />
+            <ComboBoxItem Content="1" Tag="1" />
+            <ComboBoxItem Content="2" Tag="2" />
+            <ComboBoxItem Content="3" Tag="3" />
+            <ComboBoxItem Content="4" Tag="4" />
         </ComboBox>
-        <CheckBox x:Name="Singleton_Check" Content="" HorizontalAlignment="Left" Margin="147,30,0,0" Grid.Row="4" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-
+        <CheckBox x:Name="Singleton_Check" Content="" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Bottom" Grid.Column="1" Height="15" Margin="124,0,127,0" Width="20" Checked="Singleton_Check_Checked"/>
     </Grid>
 </Window>

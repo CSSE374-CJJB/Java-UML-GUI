@@ -18,6 +18,12 @@ namespace Java_UML_GUI
         public int Adapter_MethodDelegation;
         public int Decorator_MethodDelegation;
         public bool? Singleton_RequireGetInstance;
+        public List<String> exclusion;
+
+        public JsonConfig()
+        {
+            exclusion = new List<String>();
+        }
 
         public static JsonConfig LoadFromFile(String path)
         {

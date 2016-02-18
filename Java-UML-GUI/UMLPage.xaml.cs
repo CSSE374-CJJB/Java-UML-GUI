@@ -1,18 +1,11 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Java_UML_GUI
 {
@@ -27,18 +20,20 @@ namespace Java_UML_GUI
         {
             InitializeComponent();
 
+            updateImage();
+
             image.MouseWheel += image_MouseWheel;
             image.MouseLeftButtonDown += image_MouseLeftButtonDown;
             image.MouseMove += image_MouseMove;
             image.MouseLeftButtonUp += image_MouseLeftButtonUp;
 
-          //  ((CheckBox)Composite_Header.Items.GetItemAt(0)).Checked += Composite_Header_Selected;
-
             TransformGroup group = new TransformGroup();
             group.Children.Add(new ScaleTransform());
             group.Children.Add(new TranslateTransform());
             image.RenderTransform = group;
-            file = File.ReadAllText(@"C:\Users\brinegjr\Documents\CSSE 374\Java-UML-Generator\output.txt");
+
+
+            file = File.ReadAllText(MainWindow.INSTANCE.config.OutputDirectory + @"\umlOutput.txt");
             PopulateCheckBoxes();
         }
 
@@ -186,15 +181,45 @@ namespace Java_UML_GUI
             }
         }
 
-        private void Composite_Header_Selected(object sender, RoutedEventArgs e)
+        private void Checkbox_Checked(object sender, RoutedEventArgs e)
         {
             CheckBox chk = (CheckBox)e.OriginalSource;
-            ItemCollection items = ((TreeViewItem)chk.Parent).Items;
-            bool? selected = chk.IsChecked;
-            for (int i = 0; i < items.Count; i++)
+
+            String clazz = ((TextBlock)((StackPanel)chk.Parent).Children[1]).Text;
+            MainWindow.INSTANCE.config.exclusion.Remove(clazz);
+            MainWindow.INSTANCE.config.SaveToFile(MainWindow.INSTANCE.configLocation);
+
+            MainWindow.runGeneration();
+
+            updateImage();
+        }
+
+        private void Checkbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CheckBox chk = (CheckBox)e.OriginalSource;
+
+            String clazz = ((TextBlock)((StackPanel)chk.Parent).Children[1]).Text;
+            MainWindow.INSTANCE.config.exclusion.Add(clazz);
+            MainWindow.INSTANCE.config.SaveToFile(MainWindow.INSTANCE.configLocation);
+
+            MainWindow.runGeneration();
+
+            updateImage();
+        }
+
+        private void updateImage()
+        {
+            using (var fs = new FileStream(MainWindow.INSTANCE.config.OutputDirectory + @"\umlOutput.txt.png", System.IO.FileMode.Open))
             {
-                ((CheckBox)items.GetItemAt(i)).IsChecked = selected;
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = fs;
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.EndInit();
+
+                image.Source = bitmapImage;
             }
+
         }
     }
 }

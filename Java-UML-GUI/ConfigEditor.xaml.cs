@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Forms;
 
 namespace Java_UML_GUI
 {
@@ -28,40 +29,32 @@ namespace Java_UML_GUI
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog fileD = new SaveFileDialog();
+            Microsoft.Win32.SaveFileDialog fileD = new Microsoft.Win32.SaveFileDialog();
             if (fileD.ShowDialog() == true)
             {
                 MainWindow.INSTANCE.config.SaveToFile(fileD.FileName);
+                MainWindow.INSTANCE.configLocation = fileD.FileName;
             }
         }
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fileD = new OpenFileDialog();
+            Microsoft.Win32.OpenFileDialog fileD = new Microsoft.Win32.OpenFileDialog();
             if (fileD.ShowDialog() == true)
             {
                 MainWindow.INSTANCE.config = JsonConfig.LoadFromFile(fileD.FileName);
+                MainWindow.INSTANCE.configLocation = fileD.FileName;
                 loadConfig();
             }  
         }
 
-        private void Output_Directory_Text_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            MainWindow.INSTANCE.config.OutputDirectory = Output_Directory_Text.Text;
-        }
-
         private void Input_Classes_Text_TextChanged(object sender, TextChangedEventArgs e)
         {
-            MainWindow.INSTANCE.config.InputClasses = Input_Class_Text.Text.Split(new string[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
+            MainWindow.INSTANCE.config.InputClasses = Input_Classes_Text.Text.Split(new string[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < MainWindow.INSTANCE.config.InputClasses.Length; i++)
             {
-                Console.WriteLine(MainWindow.INSTANCE.config.InputClasses.GetValue(i));
+                Console.WriteLine(MainWindow.INSTANCE.config.InputClasses[i]);
             }
-        }
-
-        private void Input_Folder_Text_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            MainWindow.INSTANCE.config.InputFolder = Input_Folder_Text.Text;
         }
 
         private void Dot_Path_Text_TextChanged(object sender, TextChangedEventArgs e)
@@ -82,13 +75,13 @@ namespace Java_UML_GUI
 
         private void loadConfig()
         {
-            Singleton_Check.IsChecked = MainWindow.INSTANCE.config.Singleton_RequireGetInstance;
-            Decorator_Delegation_Number.SelectedIndex = MainWindow.INSTANCE.config.Decorator_MethodDelegation;
+            Singleton_Check.IsChecked = MainWindow.INSTANCE.config.Singleton_RequireGetInstance == null ? false: MainWindow.INSTANCE.config.Singleton_RequireGetInstance;
             Adapter_Delegation_Number.SelectedIndex = MainWindow.INSTANCE.config.Adapter_MethodDelegation;
+            Decorator_Delegation_Number.SelectedIndex = MainWindow.INSTANCE.config.Decorator_MethodDelegation;
             Phases_Text.Text = String.Join(", ", MainWindow.INSTANCE.config.Phases);
             Dot_Path_Text.Text = MainWindow.INSTANCE.config.DotPath;
             Input_Folder_Text.Text = MainWindow.INSTANCE.config.InputFolder;
-            Input_Class_Text.Text = String.Join(", ", MainWindow.INSTANCE.config.InputClasses);
+            Input_Classes_Text.Text = String.Join(", ", MainWindow.INSTANCE.config.InputClasses);
             Output_Directory_Text.Text = MainWindow.INSTANCE.config.OutputDirectory;
         }
 
@@ -100,6 +93,37 @@ namespace Java_UML_GUI
         private void Adapter_Delegation_Number_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             MainWindow.INSTANCE.config.Adapter_MethodDelegation = Adapter_Delegation_Number.SelectedIndex;
+        }
+
+        private void Output_Directory_Click(object sender, RoutedEventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            if(dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Output_Directory_Text.Text = dialog.SelectedPath;
+                MainWindow.INSTANCE.config.OutputDirectory = dialog.SelectedPath;
+            }
+        }
+
+        private void Input_Folder_Click(object sender, RoutedEventArgs e)
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Input_Folder_Text.Text = dialog.SelectedPath;
+                MainWindow.INSTANCE.config.InputFolder = dialog.SelectedPath;
+            }
+        }
+
+        private void Dot_Path_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog fileD = new Microsoft.Win32.OpenFileDialog();
+            fileD.Filter = "DotProgram|dot.exe";
+            if (fileD.ShowDialog() == true)
+            {
+                Dot_Path_Text.Text = fileD.FileName;
+                MainWindow.INSTANCE.config.DotPath = fileD.FileName;
+            }
         }
     }
 }
