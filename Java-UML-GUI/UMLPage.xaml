@@ -5,7 +5,7 @@
       Title="UML Viewer">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="170"/>
+            <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <TreeView x:Name="treeView" HorizontalAlignment="Left" Width="200" Grid.Column="0">
