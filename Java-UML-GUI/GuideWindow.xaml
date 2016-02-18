@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Java_UML_GUI"
         mc:Ignorable="d"
-        Title="GuideWindow" Height="300" Width="300">
-    <Grid>
-        
+        Title="GuideWindow" Height="431.461" Width="344.944">
+    <Grid Margin="0,0,0.4,-4.4">
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="20,39,0,0" TextWrapping="Wrap" Text="Instructions for configuration and running:" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Height="181" Margin="20,60,0,0" TextWrapping="Wrap" Text="The first step to be taken is, from the main menu, click on configuration.  Then select the desired output directory, input folder, and location of the graphviz dot.exe file.  After that, type in the fully qualified names of the classes you want to include seperated by a comma and a space.  Similarly, enter in the phases you want to include, choices being: decorator detection, singleton detection, and dot generation.  Finally, select values for the adapter and decorator delegation, and the singleton checkbox.  Afterwards, save the configuration file and select analyze from the main menu." VerticalAlignment="Top" Width="308"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="20,250,0,0" TextWrapping="Wrap" Text="Instructions for manipulating after analyzation:" VerticalAlignment="Top" RenderTransformOrigin="0.257,-0.466" FontWeight="Bold"/>
+        <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="20,270,0,0" TextWrapping="Wrap" Text="On the left hand side, there will be a pane of patterns hold all of the classes under their corresponding pattern if they have one.  By checking their checkboxes, the image will reload with the class excluded from the diagram, same if it is clicked again.  To look at other parts of the photo, just click and drag the photo in the pane." VerticalAlignment="Top"/>
+
     </Grid>
 </Window>
